@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    
+    <h1 class="mt-4">Modifier une citation</h1>
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success mt-4">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {{ form_start(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.citation) }}
+        {{ form_widget(form.citation) }}
+        <div class="form-error">
+            {{ form_errors(form.citation) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.explication) }}
+        {{ form_widget(form.explication) }}
+        <div class="form-error">
+            {{ form_errors(form.explication) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.auteurs) }}
+        {{ form_widget(form.auteurs) }}
+        <div class="form-error">
+            {{ form_errors(form.auteurs) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form.submit) }}
+    </div>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}

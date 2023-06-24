@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Repository;
+
+use App\Entity\Citations;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
+/**
+ * @extends ServiceEntityRepository<Citations>
+ *
+ * @method Citations|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Citations|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Citations[]    findAll()
+ * @method Citations[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class CitationsRepository extends ServiceEntityRepository
+{
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, Citations::class);
+    }
+
+    public function save(Citations $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(Citations $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+
+}

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Citations | citations{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    {% if citations|length > 0 %}
+    <h1>Les citations :</h1>
+
+    {# lien cree un citation #}
+    <a href="{{ path('citations.new') }}" class="btn btn-primary mt-4">
+        Créer un citation
+    </a>
+
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success mt-4">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <div class="count mt-4">
+        Il y a
+        {{ citations.getTotalItemCount }}
+        citations au total.
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Citation</th>
+                <th scope="col">Explication</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Date de création</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for citation in citations %}
+            <tr class="table-primary">
+                <td>{{ citation.citation }}</td>
+                <td>{{ citation.explication }}</td>
+                <td>{{ citation.auteurs }}</td>
+                <td>{{ citation.dateModif|date('d/m/Y') }}</td>
+                <td>
+                    <a href="{{ path('citations.edit', { id: citation.id }) }}" class="btn btn-info">
+                        Modifier
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('citations.delete', { id: citation.id }) }}" class="btn btn-warning">
+                        Supprimer
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation d-flex justify-content-center mt-4 mb-4">
+        {{ knp_pagination_render(citations) }}
+    </div>
+    {% else %}
+    <h4>Il n'y a pas d'citationss</h4>
+    {% endif %}
+</div>
+{% endblock %}
