@@ -14,7 +14,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CitationsController extends AbstractController
 {
-
     /**
      * Affiche la liste des citations
      * 
@@ -25,6 +24,7 @@ class CitationsController extends AbstractController
      * 
      */
     #[Route('/citations', name: 'citations', methods: ['GET'])]
+
     public function index(CitationsRepository $repository,
     PaginatorInterface $paginator,
     Request $request): Response

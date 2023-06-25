@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+
+
+{% block title %}SymRecipe - Nouvel user{% endblock %}
+
+{% block body %}
+<div class="container">
+    
+    <h1 class="mt-4">Ajout d'un user</h1>
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success mt-4">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {{ form_start(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+        <div class="form-error">
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+
+    {# <div class="form-group">
+        {{ form_label(form.rolesAdmin) }}
+        {{ form_widget(form.rolesAdmin) }}
+        <div class="form-error">
+            {{ form_errors(form.rolesAdmin) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.rolesUser) }}
+        {{ form_widget(form.rolesUser) }}
+        <div class="form-error">
+            {{ form_errors(form.rolesUser) }}
+        </div>
+    </div> #}
+    <div class="form-group">
+        {{ form_label(form.roles) }}
+        {{ form_widget(form.roles) }}
+        <div class="form-error">
+            {{ form_errors(form.roles) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.password) }}
+        {{ form_widget(form.password) }}
+        <div class="form-error">
+            {{ form_errors(form.password) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form.submit) }}
+    </div>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}
