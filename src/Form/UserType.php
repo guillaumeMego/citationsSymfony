@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class UserType extends AbstractType
 {
@@ -24,14 +25,14 @@ class UserType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Adresse email'
-                ]
+                ],
             ])
             // checkbox
 
             ->add('roles', ChoiceType::class, [
                 'label' => 'Rôles',
                 'label_attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-label mt-4',
                 ],
                 'choices' => [
                     'Administrateur' => 'ROLE_ADMIN',
@@ -43,20 +44,43 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => ' ms-2',
                 ]
             ])
             
-            ->add('password', PasswordType::class, [
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe ne correspondent pas.',
                 'label' => 'Mot de passe',
                 'label_attr' => [
-                    'class' => 'form-label',
+                    'class' => 'form-label mt-4',
+                ],
+                'required' => true,
+                'first_options'  => [
+                    'label' => 'Mot de passe',
+                    'label_attr' => [
+                        'class' => 'form-label mt-4',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => 'Mot de passe'
+                    ],
+                    'required' => false,
+                ],
+                'second_options' => [
+                    'label' => 'Répéter le mot de passe',
+                    'label_attr' => [
+                        'class' => 'form-label mt-4',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => 'Répéter le mot de passe'
+                    ],
+                    'required' => false,
                 ],
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Mot de passe'
-                ],
-                'required' => false,
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer',
