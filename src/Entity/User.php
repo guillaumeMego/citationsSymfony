@@ -111,13 +111,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): static
-    {
-        $this->password = $password;
-
-        return $this;
+    public function setPassword(?string $password): void
+{
+    if ($password === null) {
+        // Ne rien faire, le mot de passe reste inchangé
+        return;
     }
 
+    $this->password = $password;
+}
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;

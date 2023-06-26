@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarColor03">
-        <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link active" href="#">Accueil
               <span class="visually-hidden">(current)</span>
@@ -19,8 +19,14 @@
             <a class="nav-link" href="{{ path('auteur') }}">Auteurs
             </a>
           </li>
-          
-         
+          {# Verifi si l'utilisateur a un role admin #}
+          {% if is_granted('ROLE_ADMIN') %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('user') }}">Utilisateurs
+            </a>
+          </li>
+          {% endif %}
+ 
       </div>
     </div>
   </nav>

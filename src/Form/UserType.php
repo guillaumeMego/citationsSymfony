@@ -26,28 +26,27 @@ class UserType extends AbstractType
                     'placeholder' => 'Adresse email'
                 ]
             ])
+            // checkbox
+
             ->add('roles', ChoiceType::class, [
                 'label' => 'Rôles',
                 'label_attr' => [
-                    'class' => 'form-label',
-                ],
-                'attr' => [
                     'class' => 'form-control',
                 ],
                 'choices' => [
-                    'Utilisateur' => false,
-                    'Administrateur' => true,
+                    'Administrateur' => 'ROLE_ADMIN',
                 ],
-                'choice_label' => function ($choice, $key, $value) {
-                    if (true === $choice) {
-                        return 'Administrateur';
-                    }
-                    return 'Utilisateur';
+                'choice_value' => function ($choice) {
+                    return $choice;
                 },
                 
                 'multiple' => true,
                 'expanded' => true,
+                'attr' => [
+                    'class' => 'form-control',
+                ]
             ])
+            
             ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe',
                 'label_attr' => [
@@ -56,7 +55,8 @@ class UserType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Mot de passe'
-                ]
+                ],
+                'required' => false,
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer',
