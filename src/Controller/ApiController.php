@@ -25,11 +25,11 @@ class ApiController extends AbstractController
                 'citation' => $citation->getCitation(),
                 'Explication' => $citation->getExplication(),
                 'date' => $citation->getDateModif(),
-                'auteur' => [
+                'auteur' => ($citation->getAuteurs() !== null) ? [
                     'id' => $citation->getAuteurs()->getId(),
                     'Auteur' => $citation->getAuteurs()->getAuteur(),
                     'Bio' => $citation->getAuteurs()->getBio(),
-                ],
+                ] : null,
             ];
         }
         // CORS

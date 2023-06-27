@@ -1,12 +1,12 @@
 {% extends "base.html.twig" %}
 
 
-{% block title %}SymRecipe - Nouvel citation{% endblock %}
+{% block title %}Citations - Nouvel citation{% endblock %}
 
 {% block body %}
 <div class="container">
     
-    <h1 class="mt-4">Ajout d'un citation</h1>
+    <h1 class="mt-4">Ajout d'une citation</h1>
     {% for message in app.flashes('success') %}
     <div class="alert alert-success mt-4">
         {{ message }}

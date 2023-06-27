@@ -28,7 +28,7 @@ class Citations
     private \DateTimeImmutable $date_modif;
 
     #[ORM\ManyToOne(inversedBy: 'citations')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Auteurs $auteurs = null;
 
 
