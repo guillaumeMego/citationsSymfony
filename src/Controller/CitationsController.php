@@ -43,7 +43,7 @@ class CitationsController extends AbstractController
     }
 
      /**
-     * Methode qui ajoute un ingredient
+     * Methode qui ajoute une citation
      * 
      * @param Auteurs $ingredient
      * @return Response

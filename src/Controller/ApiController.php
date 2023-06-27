@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controller;
 
@@ -10,13 +10,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
 {
+    /**
+     * Methode qui retourne la liste des citations
+     * 
+     * @param CitationsRepository $repository
+     * @return JsonResponse
+     */
     #[Route('/api/citations', name: 'api', methods: ['GET'])]
-    public function index(CitationsRepository $repository,
-    AuteursRepository $auteursRepository): JsonResponse
-    {
+    public function index(
+        CitationsRepository $repository,
+        AuteursRepository $auteursRepository
+    ): JsonResponse {
         $citations = $repository->findAll();
         $auteursRepository->findAll();
-        
+
         $data = [];
 
         foreach ($citations as $citation) {
@@ -32,10 +39,9 @@ class ApiController extends AbstractController
                 ] : null,
             ];
         }
-        // CORS
+
         $response = new JsonResponse($data);
         $response->headers->set('Access-Control-Allow-Origin', '*');
         return $response;
-        
     }
 }

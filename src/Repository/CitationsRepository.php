@@ -38,6 +38,4 @@ class CitationsRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
-
 }

@@ -102,7 +102,6 @@ class Auteurs
     public function removeCitation(Citations $citation): static
     {
         if ($this->citations->removeElement($citation)) {
-            // set the owning side to null (unless already changed)
             if ($citation->getAuteurs() === $this) {
                 $citation->setAuteurs(null);
             }

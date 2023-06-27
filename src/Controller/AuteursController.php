@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AuteursController extends AbstractController
 {
     /**
-     * Metgod qui affiche la liste des auteurs
+     * Methode qui affiche la liste des auteurs
      * 
      * @param AuteursRepository $repository
      * @return Response
@@ -28,7 +28,6 @@ class AuteursController extends AbstractController
     PaginatorInterface $paginator,
     Request $request): Response
     {
-
         $auteurs = $paginator->paginate(
             $repository->findAll(),
             $request->query->getInt('page', 1),
@@ -57,7 +56,6 @@ class AuteursController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
             $ingredient = $form->getData();
             $manager->persist($ingredient);
             $manager->flush();
@@ -95,7 +93,6 @@ class AuteursController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
             $ingredient = $form->getData();
             $manager->persist($ingredient);
             $manager->flush();
