@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Auteurs;
 use App\Entity\Citations;
 use App\Repository\AuteursRepository;
+use Doctrine\ORM\Query\Expr\Select;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -14,6 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints\Choice;
 
 class CitationsType extends AbstractType
 {
